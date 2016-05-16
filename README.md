@@ -1,0 +1,2 @@
+# formu.js
+Typed Model
