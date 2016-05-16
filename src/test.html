@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <title>Test</title>
+  <script src="./types.js"></script>
+  <script src="./form.js"></script>
+  <style type="text/css">
+  .invalid {
+    border:1px solid red;
+  }
+  </style>
+</head>
+<body>
+
+<script>
+var UserModel = Model('User',{
+  name: PatternStr(/^\w{6,32}$/),
+  age: Int32Range(18,200),
+  description: RangeText(0,200),
+  gender:Enum('男','女')
+});
+
+var error = UserModel.check({
+  name:"245325",
+  age:13,
+  gender:'男',
+  description:"desc"
+});
+console.log(error);
+
+var form = Form.for(UserModel);
+document.body.appendChild(form);
+
+</script>
+</body>
+</html>
